@@ -49,12 +49,14 @@ export class StoryEngine {
     this.bgB = document.getElementById("scene-bg-b");
     this.portraitStage = document.getElementById("portrait-stage");
     this.chapterCard = document.getElementById("chapter-card");
+    this.chapterCardInner = this.chapterCard.querySelector(".chapter-card-inner");
     this.cardLabel = document.getElementById("chapter-card-label");
     this.cardTitle = document.getElementById("chapter-card-title");
     this.cardDate = document.getElementById("chapter-card-date");
     this.cardQuote = document.getElementById("chapter-card-quote");
     this.chapterStart = document.getElementById("btn-chapter-start");
     this.dialogueShell = document.getElementById("dialogue-shell");
+    this.dialogueInner = this.dialogueShell.querySelector(".dialogue-inner");
     this.speakerName = document.getElementById("speaker-name");
     this.dialogueText = document.getElementById("dialogue-text");
     this.dialogueLive = document.getElementById("dialogue-live");
@@ -197,6 +199,7 @@ export class StoryEngine {
     this.cardTitle.textContent = chapter.title;
     this.cardDate.textContent = chapter.date;
     this.cardQuote.textContent = chapter.quote;
+    this.chapterCardInner.dataset.day = chapter.number ? String(chapter.number).padStart(2, "0") : "P";
     this.#updateHud();
     window.setTimeout(() => this.chapterStart.focus(), 80);
   }
@@ -255,6 +258,7 @@ export class StoryEngine {
     this.#hideChoices();
     this.chapterCard.hidden = true;
     this.dialogueShell.hidden = page.kind === "piano";
+    this.dialogueInner.dataset.page = `${String(this.state.pageIndex + 1).padStart(2, "0")} / ${String(chapter.pages.length).padStart(2, "0")}`;
 
     const previous = this.sceneState ?? this.#chapterScene(chapter);
     const has = (key) => Object.prototype.hasOwnProperty.call(page, key);

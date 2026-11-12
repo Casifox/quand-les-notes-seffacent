@@ -56,6 +56,7 @@ export class PianoGame {
     this.continueButton = document.getElementById("piano-continue");
     this.keysWhite = document.getElementById("keys-white");
     this.keysBlack = document.getElementById("keys-black");
+    this.keyboard = document.getElementById("piano-keyboard");
     this.labelsButton = document.getElementById("piano-labels");
     this.layout = this.stage.querySelector(".piano-layout");
     this.footer = this.stage.querySelector(".piano-footer");
@@ -115,7 +116,7 @@ export class PianoGame {
       button.dataset.note = note;
       button.style.left = `calc(${boundary}% - 2.05%)`;
       button.setAttribute("aria-label", `${frenchNoteName(note, { octave: true })} — ${this.#keyboardHint(note) || "clavier"}`);
-      button.innerHTML = `<span class="key-note">${shortFrenchName(note)}</span>`;
+      button.innerHTML = `<span class="key-note">${shortFrenchName(note)}<small>${this.#keyboardHint(note) ?? ""}</small></span>`;
       blackWrapper.appendChild(button);
       this.keyElements.set(note, button);
     });
@@ -201,6 +202,7 @@ export class PianoGame {
     this.#renderStaff();
     this.#updateProgress();
     this.#focusStart();
+    window.requestAnimationFrame(() => this.#focusKeyboardRange());
 
     document.body.classList.add("piano-open");
   }
@@ -286,6 +288,24 @@ export class PianoGame {
       else if (this.mode === "duet") this.stage.querySelector(".piano-instruction")?.focus?.();
       else this.listenButton.focus();
     }, 80);
+  }
+
+  #focusKeyboardRange() {
+    if (!this.isOpen || !this.keyboard) return;
+    if (!window.matchMedia("(max-width: 640px)").matches) {
+      this.keyboard.scrollLeft = 0;
+      return;
+    }
+    const notes = this.sequence.filter(Boolean);
+    const elements = notes.map((note) => this.keyElements.get(note)).filter(Boolean);
+    if (!elements.length) return;
+    const keyboardRect = this.keyboard.getBoundingClientRect();
+    const rects = elements.map((element) => element.getBoundingClientRect());
+    const left = Math.min(...rects.map((rect) => rect.left - keyboardRect.left + this.keyboard.scrollLeft));
+    const right = Math.max(...rects.map((rect) => rect.right - keyboardRect.left + this.keyboard.scrollLeft));
+    const max = Math.max(0, this.keyboard.scrollWidth - this.keyboard.clientWidth);
+    const target = (left + right) / 2 - this.keyboard.clientWidth / 2;
+    this.keyboard.scrollLeft = Math.max(0, Math.min(max, target));
   }
 
   /* ------------------------------------------------------------------ */

@@ -587,7 +587,7 @@ class App {
       const slotNumber = String(slot + 1).padStart(2, "0");
       if (!state) {
         return `
-          <article class="slot-card is-empty">
+          <article class="slot-card is-empty" data-folio="${slotNumber} / 03">
             <span class="slot-index">CARNET ${slotNumber}</span>
             <p class="slot-day">Libre</p>
             <p class="slot-empty-title">Un carnet encore vierge.</p>
@@ -605,7 +605,7 @@ class App {
       const meta = `${formatDate(state.updatedAt, "short")} · ${state.memories.length} souvenir${state.memories.length > 1 ? "s" : ""} · ${formatPlayTime(state.playTime)}`;
       const primaryLabel = state.finished ? "Voir la fin" : "Reprendre";
       return `
-        <article class="slot-card">
+        <article class="slot-card" data-folio="${slotNumber} / 03">
           <span class="slot-index">CARNET ${slotNumber}</span>
           <p class="slot-day">${escapeHTML(day)}</p>
           <p class="slot-title">${escapeHTML(title)}</p>
