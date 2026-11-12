@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="fr" data-text-speed="normal">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Quand les notes s'effacent — Une histoire en sept jours</title>
+  <meta name="description" content="Quand les notes s'effacent : un roman musical interactif en sept jours. Revenez à Kerlann, écoutez Élise, jouez le piano et gardez ce qui reste.">
+  <meta name="author" content="Les Mouettes">
+  <meta name="theme-color" content="#0c1a22">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:title" content="Quand les notes s'effacent">
+  <meta property="og:description" content="Un roman musical interactif en sept jours. Une maison au bord de la mer. Un piano. Une mémoire qui s'efface.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./assets/art/social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Quand les notes s'effacent">
+  <meta name="twitter:description" content="Un roman musical interactif en sept jours. Écoutez, jouez, souvenez-vous.">
+  <meta name="twitter:image" content="./assets/art/social-card.png">
+  <link rel="icon" href="./assets/art/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/css/base.css">
+  <link rel="stylesheet" href="./assets/css/screens.css">
+  <link rel="stylesheet" href="./assets/css/game.css">
+  <link rel="stylesheet" href="./assets/css/piano.css">
+  <link rel="stylesheet" href="./assets/css/responsive.css">
+  <script type="module" src="./assets/js/main.js"></script>
+</head>
+<body>
+  <a id="skip-link" class="skip-link" href="#dialogue-shell" hidden>Aller au dialogue</a>
+
+  <div id="boot" class="boot" aria-live="polite">
+    <div class="boot-mark" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <p class="boot-title">Quand les notes s'effacent</p>
+    <p class="boot-status">On accorde le piano…</p>
+  </div>
+
+  <div id="app" class="app" data-screen="title">
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- ÉCRAN-TITRE -->
+    <section id="screen-title" class="screen screen-title is-active" aria-labelledby="game-title">
+      <div class="title-art" aria-hidden="true">
+        <img src="./assets/art/backgrounds/arrivee.svg" alt="">
+        <div class="title-art-tint"></div>
+        <div class="title-art-vignette"></div>
+      </div>
+      <canvas id="atmosphere" class="atmosphere" aria-hidden="true"></canvas>
+
+      <header class="title-top">
+        <a class="brand" href="./index.html" aria-label="Quand les notes s'effacent — accueil">
+          <svg viewBox="0 0 42 42" aria-hidden="true" class="brand-mark">
+            <circle cx="21" cy="21" r="19" fill="none" stroke="currentColor" stroke-width="1"/>
+            <path d="M17 28V13.5l11-2.2v14.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <ellipse cx="14.2" cy="28.7" rx="3.4" ry="2.5" fill="currentColor"/>
+            <ellipse cx="25.2" cy="26.7" rx="3.4" ry="2.5" fill="currentColor"/>
+          </svg>
+          <span>Les Mouettes</span>
+        </a>
+        <div class="title-top-actions">
+          <button id="btn-title-sound" class="icon-btn" type="button" aria-label="Couper le son" title="Son">
+            <span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          </button>
+          <button id="btn-title-settings" class="text-btn" type="button">Réglages</button>
+        </div>
+      </header>
+
+      <div class="title-hero">
+        <p class="eyebrow reveal-up">Une histoire en sept jours</p>
+        <h1 id="game-title" class="title-logo reveal-up" aria-label="Quand les notes s'effacent">
+          <span class="title-logo-line title-logo-quand">Quand les</span>
+          <span class="title-logo-line title-logo-notes">notes</span>
+          <span class="title-logo-line title-logo-effacent">s'effacent</span>
+        </h1>
+        <p class="title-tagline reveal-up">Une maison au bord de la mer. Un piano. Une mémoire qui prend l'eau.</p>
+
+        <div class="title-actions reveal-up">
+          <button id="btn-new-game" class="btn btn-primary" type="button">
+            <span>Nouvelle histoire</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </button>
+          <button id="btn-continue" class="btn btn-ghost" type="button" disabled>
+            <span>Continuer</span>
+          </button>
+        </div>
+        <p id="continue-meta" class="continue-meta">Aucun carnet ouvert.</p>
+      </div>
+
+      <footer class="title-bottom">
+        <p class="title-note">Casque conseillé <span aria-hidden="true">·</span> 45 à 70 minutes <span aria-hidden="true">·</span> Sauvegarde automatique</p>
+        <nav class="title-links" aria-label="Informations">
+          <button id="btn-title-slots" class="text-btn" type="button">Les carnets</button>
+          <button id="btn-title-credits" class="text-btn" type="button">Crédits & aide</button>
+          <button id="btn-title-fullscreen" class="text-btn" type="button">Plein écran</button>
+        </nav>
+        <p class="title-credit">Une création originale — texte, images et musique</p>
+      </footer>
+    </section>
+
+    <!-- ÉCRAN DE JEU -->
+    <section id="screen-game" class="screen screen-game" aria-label="Jeu" hidden>
+      <div class="scene" id="scene">
+        <div class="scene-bg-wrap" aria-hidden="true">
+          <img id="scene-bg-a" class="scene-bg is-active" alt="">
+          <img id="scene-bg-b" class="scene-bg" alt="">
+        </div>
+        <div id="scene-wash" class="scene-wash" aria-hidden="true"></div>
+        <canvas id="scene-atmosphere" class="atmosphere scene-atmosphere" aria-hidden="true"></canvas>
+        <div id="scene-lightning" class="scene-lightning" aria-hidden="true"></div>
+
+        <header class="hud">
+          <div class="hud-chapter">
+            <span id="hud-day" class="hud-day">Prologue</span>
+            <span class="hud-rule" aria-hidden="true"></span>
+            <span id="hud-chapter-title" class="hud-title">La lettre</span>
+          </div>
+          <div class="hud-actions">
+            <button id="btn-journal" class="hud-btn" type="button" aria-label="Ouvrir le carnet de souvenirs">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22V5.5Z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M8 7h8M8 11h6"/></svg>
+              <span>Carnet</span>
+              <b id="journal-count" class="journal-count">0</b>
+            </button>
+            <button id="btn-game-sound" class="hud-btn hud-btn-icon" type="button" aria-label="Couper le son" title="Son">
+              <span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+            </button>
+            <button id="btn-menu" class="hud-btn hud-btn-icon" type="button" aria-label="Ouvrir le menu" title="Menu (Échap)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+          </div>
+        </header>
+
+        <p id="scene-location" class="scene-location">Kerlann · Les Mouettes</p>
+
+        <div id="portrait-stage" class="portrait-stage" aria-hidden="true"></div>
+
+        <div id="chapter-card" class="chapter-card" role="dialog" aria-modal="true" aria-labelledby="chapter-card-title" hidden>
+          <div class="chapter-card-inner">
+            <p class="chapter-eyebrow" id="chapter-card-label">Jour 1</p>
+            <div class="chapter-ornament" aria-hidden="true"><span></span><i></i><span></span></div>
+            <h2 id="chapter-card-title">La clé sous le pot</h2>
+            <p id="chapter-card-date" class="chapter-date">Samedi 13 septembre</p>
+            <p id="chapter-card-quote" class="chapter-quote">« On ne revient jamais vraiment chez soi. On revient vers quelqu'un. »</p>
+            <button id="btn-chapter-start" class="btn btn-primary" type="button">
+              <span>Ouvrir la journée</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="dialogue-shell" class="dialogue-shell" tabindex="-1" hidden>
+          <div class="dialogue-inner">
+            <div class="dialogue-meta">
+              <span id="speaker-name" class="speaker-name">Élise</span>
+              <span class="dialogue-flourish" aria-hidden="true"></span>
+              <span id="dialogue-hint" class="dialogue-hint">Espace ou entrée</span>
+            </div>
+            <p id="dialogue-text" class="dialogue-text" aria-hidden="true"></p>
+            <p id="dialogue-live" class="sr-only" aria-live="polite"></p>
+            <div id="choice-list" class="choice-list" hidden></div>
+            <div class="dialogue-footer">
+              <div class="dialogue-tools">
+                <button id="btn-dialogue-journal" class="dialogue-tool" type="button">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22V5.5Z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/></svg>
+                  <span>Carnet</span>
+                </button>
+                <button id="btn-dialogue-save" class="dialogue-tool" type="button">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h12l3 3v15H5V3Z"/><path d="M8 3v6h8V3M8 21v-7h8v7"/></svg>
+                  <span>Sauver</span>
+                </button>
+              </div>
+              <button id="btn-next" class="next-btn" type="button" aria-label="Continuer le dialogue">
+                <span id="btn-next-label">Continuer</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="save-indicator" class="save-indicator" role="status" aria-live="polite">
+          <span class="save-dot" aria-hidden="true"></span>
+          <span id="save-text">Sauvegardé</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÉCRAN DE FIN -->
+    <section id="screen-end" class="screen screen-end" aria-labelledby="end-title" hidden>
+      <div class="end-art" aria-hidden="true">
+        <img src="./assets/art/backgrounds/epilogue.svg" alt="">
+        <div class="end-vignette"></div>
+      </div>
+      <div class="end-top">
+        <p class="eyebrow">Fin</p>
+        <button id="btn-end-title" class="text-btn" type="button">Retour au titre</button>
+      </div>
+      <div class="end-card">
+        <p id="end-kicker" class="end-kicker">La note tenue</p>
+        <h2 id="end-title">Ce qui reste</h2>
+        <p id="end-quote" class="end-quote"></p>
+        <div class="end-divider" aria-hidden="true"><span></span><i></i><span></span></div>
+        <p id="end-summary" class="end-summary"></p>
+        <div class="end-stats">
+          <div><strong>7</strong><span>journées</span></div>
+          <div><strong id="end-memory-count">0</strong><span>souvenirs</span></div>
+          <div><strong id="end-coda">—</strong><span>notes à toi</span></div>
+        </div>
+        <div class="end-actions">
+          <button id="btn-end-journal" class="btn btn-primary" type="button">Feuilleter le carnet</button>
+          <button id="btn-end-replay" class="btn btn-ghost" type="button">Nouvelle histoire</button>
+        </div>
+        <p id="end-credit" class="end-credit">Merci d'avoir écouté.</p>
+      </div>
+    </section>
+
+    <!-- LE PIANO -->
+    <section id="piano-stage" class="piano-stage" role="dialog" aria-modal="true" aria-labelledby="piano-title" hidden>
+      <img class="piano-bg" src="./assets/art/backgrounds/atelier.svg" alt="">
+      <div class="piano-wash" aria-hidden="true"></div>
+      <div class="piano-grain" aria-hidden="true"></div>
+
+      <header class="piano-top">
+        <button id="piano-menu" class="text-btn" type="button">Menu</button>
+        <div class="piano-heading">
+          <span id="piano-day" class="piano-day">Jour 1</span>
+          <h2 id="piano-title">Le fil</h2>
+        </div>
+        <div class="piano-top-tools">
+          <button id="piano-sound" class="icon-btn" type="button" aria-label="Couper le son" title="Son">
+            <span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          </button>
+          <button id="piano-labels" class="text-btn piano-labels" type="button" aria-pressed="true">Noms des notes</button>
+        </div>
+      </header>
+
+      <div class="piano-layout">
+        <div class="piano-main">
+          <p id="piano-brief" class="piano-brief"></p>
+          <div id="piano-score" class="piano-score" aria-label="Partition de la mélodie"></div>
+          <div class="piano-status" aria-live="polite">
+            <p id="piano-feedback" class="piano-feedback">Écoute la phrase, puis rends-la-moi.</p>
+            <p id="piano-progress" class="piano-progress"></p>
+          </div>
+          <div class="piano-actions">
+            <button id="piano-listen" class="btn btn-ghost btn-small" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10v4h3l5 4V6l-5 4H5ZM17 9a4 4 0 0 1 0 6M19.5 6.5a7.5 7.5 0 0 1 0 11"/></svg>
+              <span>Écouter</span>
+            </button>
+            <button id="piano-hint" class="btn btn-ghost btn-small" type="button">
+              <span>Indice</span>
+            </button>
+            <button id="piano-reset" class="btn btn-ghost btn-small" type="button">
+              <span>Recommencer</span>
+            </button>
+            <button id="piano-submit" class="btn btn-primary btn-small" type="button" hidden>
+              <span>Graver ces notes</span>
+            </button>
+          </div>
+        </div>
+        <aside class="piano-aside">
+          <div id="piano-portrait" class="piano-portrait"></div>
+          <blockquote id="piano-quote" class="piano-quote"></blockquote>
+        </aside>
+      </div>
+
+      <div class="piano-footer">
+        <p id="piano-instruction" class="piano-instruction">Joue les notes avec les touches du piano.</p>
+        <div id="piano-keyboard" class="piano-keyboard" aria-label="Piano interactif">
+          <div class="keys-white" id="keys-white"></div>
+          <div class="keys-black" id="keys-black"></div>
+        </div>
+        <p class="piano-key-map">Clavier : <kbd>Z</kbd> <kbd>S</kbd> <kbd>X</kbd> <kbd>D</kbd> <kbd>C</kbd>… <span>ou cliquez sur les touches</span></p>
+      </div>
+
+      <div id="piano-success" class="piano-success" role="dialog" aria-modal="true" aria-labelledby="piano-success-title" hidden>
+        <div class="piano-success-card">
+          <p class="eyebrow">Fragment retrouvé</p>
+          <div id="piano-success-icon" class="memory-icon" aria-hidden="true"></div>
+          <h3 id="piano-success-title">La clé bleue</h3>
+          <p id="piano-success-text"></p>
+          <div id="piano-success-notes" class="success-notes"></div>
+          <button id="piano-continue" class="btn btn-primary" type="button">
+            <span>Retour à la maison</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+  </div>
+
+  <noscript>
+    <div class="noscript">
+      <h1>Quand les notes s'effacent</h1>
+      <p>Ce jeu a besoin de JavaScript et du son de votre navigateur. Activez JavaScript, puis rechargez la page.</p>
+    </div>
+  </noscript>
+
+  <!-- BOÎTES DE DIALOGUE -->
+  <dialog id="slots-dialog" class="modal modal-slots" aria-labelledby="slots-title">
+    <div class="modal-panel">
+      <button class="modal-close" type="button" data-close aria-label="Fermer">×</button>
+      <p class="eyebrow">Les carnets</p>
+      <h2 id="slots-title">Reprendre là où le souvenir s'arrête</h2>
+      <p class="modal-lead">Trois carnets. Le jeu s'y inscrit tout seul, à chaque scène.</p>
+      <div id="slots-list" class="slots-list"></div>
+      <div id="slot-mode-note" class="modal-note">Choisissez un carnet pour commencer.</div>
+    </div>
+  </dialog>
+
+  <dialog id="menu-dialog" class="modal modal-menu" aria-labelledby="menu-title">
+    <div class="modal-panel modal-panel-narrow">
+      <button class="modal-close" type="button" data-close aria-label="Fermer">×</button>
+      <p class="eyebrow">Pause</p>
+      <h2 id="menu-title">La maison attend</h2>
+      <p id="menu-context" class="modal-lead">Jour 1 · La clé sous le pot</p>
+      <div class="menu-list">
+        <button id="menu-resume" class="menu-item" type="button"><span>Reprendre</span><span class="menu-arrow">→</span></button>
+        <button id="menu-save" class="menu-item" type="button"><span>Sauvegarder maintenant</span><span id="menu-save-meta" class="menu-meta"></span></button>
+        <button id="menu-journal" class="menu-item" type="button"><span>Le carnet de souvenirs</span><span id="menu-journal-count" class="menu-meta">0 / 8</span></button>
+        <button id="menu-settings" class="menu-item" type="button"><span>Réglages</span><span class="menu-arrow">→</span></button>
+        <button id="menu-credits" class="menu-item" type="button"><span>Crédits & aide</span><span class="menu-arrow">→</span></button>
+        <button id="btn-menu-title" class="menu-item menu-item-quiet" type="button"><span>Retour au titre</span><span class="menu-arrow">→</span></button>
+      </div>
+      <p class="modal-note">La sauvegarde est automatique à chaque scène. <kbd>Échap</kbd> ferme ce menu.</p>
+    </div>
+  </dialog>
+
+  <dialog id="settings-dialog" class="modal modal-settings" aria-labelledby="settings-title">
+    <div class="modal-panel">
+      <button class="modal-close" type="button" data-close aria-label="Fermer">×</button>
+      <p class="eyebrow">Réglages</p>
+      <h2 id="settings-title">Trouver le bon accord</h2>
+      <div class="settings-group">
+        <div class="setting-row">
+          <label for="range-music">Musique</label>
+          <input id="range-music" type="range" min="0" max="100" step="1" value="60">
+          <output id="out-music" for="range-music">60</output>
+        </div>
+        <div class="setting-row">
+          <label for="range-piano">Piano</label>
+          <input id="range-piano" type="range" min="0" max="100" step="1" value="78">
+          <output id="out-piano" for="range-piano">78</output>
+        </div>
+        <div class="setting-row">
+          <label for="range-ambience">Ambiance</label>
+          <input id="range-ambience" type="range" min="0" max="100" step="1" value="38">
+          <output id="out-ambience" for="range-ambience">38</output>
+        </div>
+      </div>
+      <div class="settings-group">
+        <div class="setting-row setting-row-block">
+          <span class="setting-label">Vitesse du texte</span>
+          <div class="segmented" id="speed-options" role="group" aria-label="Vitesse du texte">
+            <button type="button" data-speed="slow">Lente</button>
+            <button type="button" data-speed="normal" aria-pressed="true">Normale</button>
+            <button type="button" data-speed="fast">Rapide</button>
+            <button type="button" data-speed="instant">Instantanée</button>
+          </div>
+        </div>
+        <label class="toggle-row">
+          <span><strong>Réduire les animations</strong><small>Pour un écran plus calme.</small></span>
+          <input id="toggle-motion" type="checkbox">
+          <i aria-hidden="true"></i>
+        </label>
+        <label class="toggle-row">
+          <span><strong>Afficher les noms des notes</strong><small>Sur le piano et les partitions.</small></span>
+          <input id="toggle-labels" type="checkbox" checked>
+          <i aria-hidden="true"></i>
+        </label>
+        <label class="toggle-row">
+          <span><strong>Son</strong><small>Toutes les pistes et le piano.</small></span>
+          <input id="toggle-sound" type="checkbox" checked>
+          <i aria-hidden="true"></i>
+        </label>
+      </div>
+      <div class="settings-footer">
+        <button id="btn-clear-saves" class="text-btn text-btn-danger" type="button">Effacer toutes les sauvegardes</button>
+        <p class="modal-note">Vos préférences restent dans ce navigateur.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="credits-dialog" class="modal modal-credits" aria-labelledby="credits-title">
+    <div class="modal-panel">
+      <button class="modal-close" type="button" data-close aria-label="Fermer">×</button>
+      <p class="eyebrow">Crédits & aide</p>
+      <h2 id="credits-title">Derrière les notes</h2>
+      <div class="credits-grid">
+        <div>
+          <h3>Une création originale</h3>
+          <p><strong>Quand les notes s'effacent</strong> est un roman musical interactif indépendant. Texte, illustrations vectorielles, piano et musiques ont été créés pour le jeu. Aucune image, police ou piste audio extérieure n'est nécessaire.</p>
+          <h3>Comment jouer</h3>
+          <p>Cliquez sur le dialogue, ou appuyez sur <kbd>Espace</kbd> / <kbd>Entrée</kbd>, pour avancer. <kbd>Échap</kbd> ouvre le menu. Sur le piano, utilisez la souris, le tactile, ou les touches indiquées. Le bouton <strong>Indice</strong> est toujours là si une note manque.</p>
+          <div class="credits-controls" aria-label="Raccourcis">
+            <span><kbd>Espace</kbd> Continuer</span>
+            <span><kbd>1</kbd> à <kbd>4</kbd> Choisir</span>
+            <span><kbd>Échap</kbd> Menu</span>
+            <span><kbd>M</kbd> Son <small>(hors piano)</small></span>
+          </div>
+        </div>
+        <div>
+          <h3>Attention</h3>
+          <p>Cette histoire évoque la maladie, la perte de mémoire et le deuil. Elle ne montre ni violence graphique ni scène explicite. Prenez soin de vous.</p>
+          <h3>Technique</h3>
+          <p>Aucun serveur, aucun compte, aucune publicité. La progression est enregistrée localement dans votre navigateur. Le jeu fonctionne hors compilation, comme un simple site statique.</p>
+          <h3>La musique</h3>
+          <p>Les morceaux et le piano sont synthétisés en temps réel avec la Web Audio API. Chaque note que vous entendez est calculée par votre navigateur.</p>
+        </div>
+      </div>
+      <div class="credits-end">
+        <span>Les Mouettes</span>
+        <span aria-hidden="true">·</span>
+        <span>Édition 2026</span>
+        <span aria-hidden="true">·</span>
+        <span>Pour celles et ceux qui restent.</span>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="journal-dialog" class="modal modal-journal" aria-labelledby="journal-title">
+    <div class="modal-panel modal-panel-wide">
+      <button class="modal-close" type="button" data-close aria-label="Fermer">×</button>
+      <div class="journal-head">
+        <div>
+          <p class="eyebrow">Le carnet</p>
+          <h2 id="journal-title">Ce que la musique garde</h2>
+        </div>
+        <p id="journal-progress" class="journal-progress">0 souvenir sur 8</p>
+      </div>
+      <div class="journal-layout">
+        <nav id="journal-list" class="journal-list" aria-label="Souvenirs retrouvés"></nav>
+        <article id="journal-detail" class="journal-detail"></article>
+      </div>
+      <p class="modal-note">Chaque fragment retrouvé peut être écouté ici.</p>
+    </div>
+  </dialog>
+
+  <dialog id="confirm-dialog" class="modal modal-confirm" aria-labelledby="confirm-title">
+    <div class="modal-panel modal-panel-narrow">
+      <p class="eyebrow">Un instant</p>
+      <h2 id="confirm-title">Confirmer</h2>
+      <p id="confirm-text" class="modal-lead"></p>
+      <div class="confirm-actions">
+        <button id="confirm-cancel" class="btn btn-ghost" type="button">Annuler</button>
+        <button id="confirm-ok" class="btn btn-primary" type="button">Confirmer</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        var boot = document.getElementById('boot');
+        if (!boot || boot.classList.contains('is-hidden')) return;
+        var status = boot.querySelector('.boot-status');
+        if (status) status.textContent = 'Le chargement prend plus de temps que prévu…';
+        setTimeout(function () {
+          if (boot.classList.contains('is-hidden')) return;
+          var title = boot.querySelector('.boot-title');
+          if (title) title.textContent = 'Le piano reste silencieux';
+          if (status) status.textContent = 'Rechargez la page ou vérifiez que JavaScript est autorisé.';
+          if (!boot.querySelector('.boot-retry')) {
+            var button = document.createElement('button');
+            button.className = 'btn btn-ghost boot-retry';
+            button.type = 'button';
+            button.textContent = 'Recharger';
+            button.addEventListener('click', function () { window.location.reload(); });
+            boot.appendChild(button);
+          }
+        }, 7000);
+      }, 5000);
+    });
+  </script>
+</body>
+</html>

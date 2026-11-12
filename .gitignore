@@ -1,0 +1,18 @@
+# Dossiers de dépendances et artefacts locaux
+node_modules/
+coverage/
+.playwright/
+.audit/
+
+# Systèmes d'exploitation
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Éditeurs
+.vscode/
+.idea/
+
+# Journaux et fichiers temporaires
+*.log
+*.tmp

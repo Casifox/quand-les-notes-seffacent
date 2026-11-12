@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b1c25"/>
+      <stop offset=".55" stop-color="#30464b"/>
+      <stop offset=".82" stop-color="#766b64"/>
+      <stop offset="1" stop-color="#aa836f"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#172225"/>
+      <stop offset="1" stop-color="#080f12"/>
+    </linearGradient>
+    <linearGradient id="roof" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a1519"/>
+      <stop offset="1" stop-color="#1c292b"/>
+    </linearGradient>
+    <linearGradient id="train" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0a1114"/>
+      <stop offset=".7" stop-color="#1a2528"/>
+      <stop offset="1" stop-color="#2b3334"/>
+    </linearGradient>
+    <radialGradient id="lampGlow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#f8d9a1" stop-opacity=".9"/>
+      <stop offset=".25" stop-color="#e1af69" stop-opacity=".38"/>
+      <stop offset="1" stop-color="#e1af69" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lampHalo" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#f1c47f" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#f1c47f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4d5f5e"/>
+      <stop offset="1" stop-color="#162d33"/>
+    </linearGradient>
+    <linearGradient id="reflection" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e7bd7f" stop-opacity=".36"/>
+      <stop offset="1" stop-color="#e7bd7f" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="blur30"><feGaussianBlur stdDeviation="30"/></filter>
+    <filter id="blur10"><feGaussianBlur stdDeviation="10"/></filter>
+    <filter id="blur4"><feGaussianBlur stdDeviation="4"/></filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#sky)"/>
+
+  <!-- Distant sea and coast -->
+  <path d="M1000 544c73-17 147-19 212-7 77 14 148 8 218-10 63-16 118-17 170-3v125H1000Z" fill="url(#sea)" opacity=".72"/>
+  <path d="M1000 520c146-22 305-15 600-2v37c-182 14-410 10-600-5Z" fill="#1d3338" opacity=".8"/>
+  <path d="M1150 566c63-4 118 3 178 8 64 6 130 1 202-12l15 4c-125 28-251 30-395 9Z" fill="url(#reflection)"/>
+  <path d="M0 510c66-20 124-18 186 5 74 27 147 21 220-4 69-24 140-20 202 10 53 25 111 28 175 9 65-20 139-17 210 10 60 22 122 25 197 2v60H0Z" fill="#192b2f"/>
+
+  <!-- Canopy -->
+  <path d="M0 0h1600v216L0 276Z" fill="url(#roof)"/>
+  <path d="M0 216 1600 156v31L0 253Z" fill="#080f12"/>
+  <path d="M0 257 1600 188v14L0 292Z" fill="#344346" opacity=".4"/>
+  <g stroke="#263537" stroke-width="3" opacity=".65">
+    <path d="M60 0 44 228M217 0l-17 240M374 0l-17 236M531 0l-17 238M688 0l-16 238M845 0l-17 236M1002 0l-17 236M1159 0l-16 234M1316 0l-16 234M1473 0l-16 232"/>
+  </g>
+  <g stroke="#0b1518" stroke-width="8" opacity=".55">
+    <path d="M0 46 1600 4M0 122 1600 75M0 194 1600 145"/>
+  </g>
+
+  <!-- Iron columns and lamps -->
+  <g>
+    <!-- column 1 -->
+    <path d="M280 198h24v530h-24Z" fill="#0d1a1e"/>
+    <path d="M285 209h8v510h-8Z" fill="#344347" opacity=".6"/>
+    <path d="M252 682h80l-10 21h-60Z" fill="#101b1e"/>
+    <path d="M260 198h64l-9 24h-46Z" fill="#0d181b"/>
+    <path d="M279 416h26l-4 10h-18Z" fill="#101c1f"/>
+    <path d="M286 428c-5 6-7 13-7 22h20c0-9-2-16-7-22Z" fill="#d4a35e" opacity=".35"/>
+    <!-- lamp -->
+    <path d="M286 426v-20" stroke="#17272a" stroke-width="2"/>
+    <path d="M270 398h33l10 28h-53Z" fill="#132124"/>
+    <path d="M277 401h20l7 21h-34Z" fill="#e4b671" opacity=".78"/>
+    <ellipse cx="287" cy="412" rx="136" ry="110" fill="url(#lampGlow)" opacity=".56"/>
+    <ellipse cx="287" cy="412" rx="220" ry="150" fill="url(#lampHalo)" opacity=".42"/>
+
+    <!-- column 2 -->
+    <path d="M1112 174h30v544h-30Z" fill="#0d1a1e"/>
+    <path d="M1118 187h11v523h-11Z" fill="#3a4749" opacity=".55"/>
+    <path d="M1080 696h94l-12 23h-70Z" fill="#101b1e"/>
+    <path d="M1091 173h73l-10 26h-53Z" fill="#0d181b"/>
+
+    <!-- column far right -->
+    <path d="M1472 150h17v552h-17Z" fill="#0c171a" opacity=".85"/>
+    <path d="M1451 697h61l-8 19h-46Z" fill="#0d181b"/>
+  </g>
+
+  <!-- Train left -->
+  <g>
+    <path d="M-60 298h520v400H-60Z" fill="url(#train)"/>
+    <path d="M-60 298h520l-26 30H-60Z" fill="#273437"/>
+    <path d="M-60 338h500v30H-60Z" fill="#0c171a"/>
+    <path d="M20 390h118v104H20Z" fill="#456263" opacity=".6"/>
+    <path d="M170 390h118v104H170Z" fill="#c4935f" opacity=".46"/>
+    <path d="M320 390h118v104H320Z" fill="#3d5353" opacity=".55"/>
+    <path d="M20 494v22h418v-22Z" fill="#0b1417"/>
+    <g stroke="#263235" stroke-width="1" opacity=".55">
+      <path d="M20 535h418M20 582h418M20 629h418"/>
+    </g>
+    <path d="M-60 670h520v28H-60Z" fill="#050c0f"/>
+    <g fill="#b48a62" opacity=".6">
+      <circle cx="20" cy="390" r="3"/><circle cx="458" cy="390" r="3"/>
+    </g>
+    <!-- Under carriage -->
+    <g fill="#060d10">
+      <circle cx="70" cy="705" r="34"/>
+      <circle cx="146" cy="705" r="34"/>
+      <circle cx="362" cy="705" r="34"/>
+      <circle cx="438" cy="705" r="34"/>
+    </g>
+    <g stroke="#273336" stroke-width="3" opacity=".5">
+      <circle cx="70" cy="705" r="24" fill="none"/>
+      <circle cx="146" cy="705" r="24" fill="none"/>
+      <circle cx="362" cy="705" r="24" fill="none"/>
+      <circle cx="438" cy="705" r="24" fill="none"/>
+    </g>
+    <path d="M-60 742h570v7H-60Z" fill="#050b0d"/>
+  </g>
+
+  <!-- Platform -->
+  <path d="M0 744h1600v156H0Z" fill="url(#floor)"/>
+  <path d="M0 744h1600v17H0Z" fill="#435052" opacity=".52"/>
+  <path d="M0 761h1600v4H0Z" fill="#090f12"/>
+  <path d="M0 783h1600" stroke="#1c292c" stroke-width="1.2" opacity=".7"/>
+  <path d="M70 900 25 790M266 900 208 781M485 900 410 777M712 900 629 773M948 900 857 769M1191 900 1094 765M1444 900 1337 761" stroke="#283436" stroke-width="1" opacity=".4"/>
+  <path d="M0 803c290 0 596-12 912-35 259-19 487-31 688-34" stroke="#314043" stroke-width="1" opacity=".4" fill="none"/>
+
+  <!-- Yellow safety line -->
+  <path d="M0 731c269-10 533-26 786-47 305-25 568-41 814-47" stroke="#bc945d" stroke-width="5" opacity=".36" fill="none"/>
+  <path d="M0 749c269-10 533-26 786-47 305-25 568-41 814-47" stroke="#c7a16b" stroke-width="1.5" opacity=".25" fill="none"/>
+
+  <!-- Bench -->
+  <g>
+    <ellipse cx="850" cy="788" rx="180" ry="20" fill="#050b0d" opacity=".6" filter="url(#blur10)"/>
+    <path d="M724 649h224v17H724ZM718 687h236v15H718Z" fill="#5d4a36"/>
+    <path d="M724 649h224v4H724ZM718 687h236v4H718Z" fill="#8b7052" opacity=".55"/>
+    <path d="M741 704v87M924 702v89M736 704h14v50h-14ZM936 702h14v50h-14Z" fill="#2e2b25"/>
+    <path d="M727 700c8 0 14 6 14 14v36h-14Z" fill="#242523"/>
+    <path d="M927 698c8 0 14 6 14 14v36h-14Z" fill="#242523"/>
+    <path d="M748 661v26M768 659v28M788 658v29M808 657v30M828 656v31M848 655v32M868 654v33M888 653v34M908 652v35M928 651v36" stroke="#2b2822" stroke-width="3" opacity=".6"/>
+    <!-- newspaper left on bench -->
+    <g transform="translate(805 674) rotate(-3)">
+      <path d="M0 0h52l8 8-7 6H1Z" fill="#b8b09d" opacity=".68"/>
+      <path d="M5 4h36M5 8h29" stroke="#5f5d55" stroke-width="1" opacity=".45"/>
+    </g>
+  </g>
+
+  <!-- Station sign -->
+  <g transform="translate(1136 318)">
+    <path d="M0 0h322v74H0Z" fill="#0f1c20" stroke="#4a5a5d" stroke-width="1"/>
+    <path d="M14 12h294v50H14Z" fill="#1d2b2e"/>
+    <text x="161" y="46" text-anchor="middle" fill="#d6c5a9" font-family="Georgia, serif" font-size="28" letter-spacing="9" opacity=".8">KERLANN</text>
+    <path d="M44 74v163M278 74v163" stroke="#0a1518" stroke-width="6"/>
+  </g>
+
+  <!-- Luggage cart silhouette right -->
+  <g opacity=".8">
+    <path d="M1264 692h114v14h-114Z" fill="#2f3532"/>
+    <path d="M1280 706v58M1360 706v58M1272 764h20M1352 764h20" stroke="#10191a" stroke-width="3"/>
+    <circle cx="1288" cy="773" r="11" fill="#090f11"/>
+    <circle cx="1362" cy="773" r="11" fill="#090f11"/>
+    <path d="M1292 680v-47h26v47M1290 634h30" stroke="#3e4540" stroke-width="3"/>
+    <rect x="1282" y="590" width="46" height="50" rx="4" fill="#48413a"/>
+    <path d="M1292 590v-9h26v9" stroke="#756b5f" stroke-width="2" fill="none"/>
+  </g>
+
+  <!-- Puddles and reflections -->
+  <g opacity=".56">
+    <path d="M390 846c62-20 115-21 169-3 41 13 70 13 117 1l18 34c-105 13-211 8-304-14Z" fill="#152c33"/>
+    <path d="M915 821c72-13 132-11 194 5 36 9 69 10 108 3l13 17c-105 20-214 12-315-9Z" fill="#192f36"/>
+    <ellipse cx="287" cy="810" rx="92" ry="16" fill="#d1a366" opacity=".18" filter="url(#blur10)"/>
+  </g>
+
+  <!-- Rain -->
+  <g stroke="#b8cacb" stroke-width="1.3" opacity=".22" stroke-linecap="round">
+    <path d="M116 172l-18 54M179 104l-24 69M320 80l-22 64M477 62l-21 61M651 42l-19 57M808 26l-22 64M976 10l-18 53M1141 0l-18 52M1318 0l-19 54M1482 0l-18 53M220 250l-16 46M404 218l-17 47M586 199l-20 56M759 180l-18 53M933 159l-17 48M1108 143l-19 53M1291 122l-17 47M1452 115l-18 52M57 368l-12 35M182 347l-14 40M706 293l-12 36M1018 260l-14 42M1236 233l-13 38M1405 220l-14 40M531 403l-11 32M260 506l-12 36M1058 476l-10 31M1362 447l-11 31M78 580l-10 30M655 536l-11 32M911 515l-10 30M1203 488l-11 32M1495 461l-10 29"/>
+  </g>
+
+  <!-- Haze and grain -->
+  <ellipse cx="300" cy="700" rx="420" ry="160" fill="#d4b17b" opacity=".05" filter="url(#blur30)"/>
+  <rect width="1600" height="900" filter="url(#grain)" opacity=".08" style="mix-blend-mode:soft-light"/>
+</svg>

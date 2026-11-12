@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="room" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a1519"/>
+      <stop offset=".5" stop-color="#111d20"/>
+      <stop offset="1" stop-color="#070f12"/>
+    </linearGradient>
+    <linearGradient id="wall" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1e2d2e"/>
+      <stop offset=".55" stop-color="#283431"/>
+      <stop offset="1" stop-color="#101b1d"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b2029"/>
+      <stop offset=".4" stop-color="#1e3b44"/>
+      <stop offset=".68" stop-color="#40595a"/>
+      <stop offset="1" stop-color="#1d363b"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3f6065"/>
+      <stop offset=".45" stop-color="#24474f"/>
+      <stop offset="1" stop-color="#0b2026"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#221f1a"/>
+      <stop offset="1" stop-color="#0a0e10"/>
+    </linearGradient>
+    <radialGradient id="candle" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#fff1c4" stop-opacity=".9"/>
+      <stop offset=".2" stop-color="#f2c77e" stop-opacity=".44"/>
+      <stop offset=".55" stop-color="#d18c46" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#b16a32" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="fire" cx=".5" cy=".55" r=".5">
+      <stop offset="0" stop-color="#f0c078" stop-opacity=".43"/>
+      <stop offset=".5" stop-color="#bb6836" stop-opacity=".13"/>
+      <stop offset="1" stop-color="#8b3f25" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="curtain" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2d3733"/>
+      <stop offset="1" stop-color="#10191b"/>
+    </linearGradient>
+    <filter id="blur30"><feGaussianBlur stdDeviation="30"/></filter>
+    <filter id="blur10"><feGaussianBlur stdDeviation="10"/></filter>
+    <filter id="blur3"><feGaussianBlur stdDeviation="3"/></filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".78" numOctaves="3" stitchTiles="stitch"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#room)"/>
+  <rect width="1600" height="900" fill="url(#wall)" opacity=".8"/>
+
+  <!-- ceiling and beams -->
+  <path d="M0 0h1600v45H0Z" fill="#070e11"/>
+  <path d="M0 45c319 1 623 10 911 27 260 15 485 16 689 5v-32Z" fill="#111b1e" opacity=".8"/>
+  <path d="M0 94 1600 66v17L0 120Z" fill="#080f12" opacity=".9"/>
+
+  <!-- Window -->
+  <g>
+    <path d="M266 94h741v548H266Z" fill="#0a1215"/>
+    <path d="M290 118h693v500H290Z" fill="#172c33"/>
+    <path d="M306 134h661v468H306Z" fill="url(#sky)"/>
+    <!-- stormy sea -->
+    <path d="M306 410c91-28 166-12 244 17 86 32 163 32 253-7 79-34 148-34 222 1 47 22 89 23 142 10v138H306Z" fill="url(#sea)"/>
+    <path d="M306 388c96-18 170 4 249 32 82 30 166 32 244 5 91-31 169-30 268 2v57c-84-11-156-5-222 17-98 33-187 34-278 6-89-28-164-31-261-5Z" fill="#46686b" opacity=".55"/>
+    <!-- lightning horizon -->
+    <path d="M1120 271v166l-26-38-16 27-36-87-41 49" fill="none" stroke="#e8ebd9" stroke-width="3" opacity=".55" filter="url(#blur3)"/>
+    <path d="M1206 337c107-31 187-26 278 10v43c-111-26-197-23-278 10Z" fill="#7f928b" opacity=".15"/>
+    <!-- rain on window -->
+    <g stroke="#b9c9c5" stroke-width="1.2" opacity=".18" stroke-linecap="round">
+      <path d="M344 160l-15 47M389 196l-17 50M443 148l-12 39M502 229l-15 46M548 171l-13 40M604 251l-18 55M686 190l-14 44M735 157l-15 46M801 269l-13 40M852 181l-17 49M918 225l-14 44M361 318l-12 37M476 354l-15 47M580 297l-13 39M669 367l-14 44M789 326l-12 36M873 398l-14 42M941 330l-12 36M409 431l-11 32M636 449l-13 41M837 447l-11 34M330 249l-10 30M716 471l-9 28M913 471l-9 28M548 397l-10 31"/>
+    </g>
+    <g fill="#c2d0cc" opacity=".26">
+      <circle cx="365" cy="168" r="2"/><circle cx="456" cy="251" r="1.3"/><circle cx="610" cy="301" r="1.7"/>
+      <circle cx="742" cy="386" r="1.4"/><circle cx="860" cy="253" r="1.2"/><circle cx="335" cy="372" r="1.8"/>
+      <circle cx="535" cy="457" r="1.2"/><circle cx="813" cy="455" r="1.6"/><circle cx="679" cy="210" r="1.1"/>
+    </g>
+    <!-- window frames -->
+    <g fill="#101b1e">
+      <path d="M403 118h15v500h-15ZM632 118h15v500h-15ZM861 118h15v500h-15M290 348h693v16H290Z"/>
+      <path d="M282 106h713v15H282ZM282 608h713v18H282Z"/>
+    </g>
+    <path d="M282 618h716v24H282Z" fill="#192320"/>
+    <path d="M267 642h746v14H267Z" fill="#080f12"/>
+    <!-- curtains buffeted -->
+    <path d="M234 93h96c-43 100-46 210-12 306 20 57 17 117-8 177h-65c32-89 38-179 15-265-23-89-15-176 17-218Z" fill="url(#curtain)" opacity=".92"/>
+    <path d="M254 106h41c-19 98-9 193 23 284 27 77 22 139 1 186h-42c22-98 15-202-17-291-23-63-28-122-6-179Z" fill="#45534b" opacity=".18"/>
+    <path d="M973 96h82c23 91 15 191-17 280-26 74-21 144 10 199h-74c-15-79-5-158 24-238 28-78 20-156-25-241Z" fill="url(#curtain)" opacity=".9"/>
+    <path d="M1016 105c24 63 17 131-15 203-30 68-31 144-1 215M989 116c22 70 13 143-20 218-24 57-26 108-11 167" stroke="#697067" stroke-width="1.4" fill="none" opacity=".14"/>
+  </g>
+
+  <!-- Fireplace right -->
+  <g>
+    <path d="M1190 315h373v386h-373Z" fill="#19211f"/>
+    <path d="M1221 395h309v276h-309Z" fill="#080c0e"/>
+    <path d="M1236 414h280v245h-280Z" fill="#151512"/>
+    <path d="M1262 643c2-80 37-125 107-138 9 55 44 89 101 104 38 10 59 20 68 36Z" fill="#2d2018"/>
+    <path d="M1323 626c-15-58 8-97 58-119 11 30 7 55-4 76 27-12 47-4 59 25-38 21-76 28-113 18Z" fill="#b36435" opacity=".55"/>
+    <path d="M1369 633c-12-37 1-63 35-81 8 24 2 43-13 58 16 1 30 9 41 24-23 10-45 10-63-1Z" fill="#e3a05b" opacity=".7"/>
+    <ellipse cx="1382" cy="602" rx="178" ry="146" fill="url(#fire)" opacity=".75"/>
+    <path d="M1177 302h399v17h-399ZM1201 701h348v24h-348Z" fill="#2c332d"/>
+    <path d="M1222 724h38v116h-38ZM1539 722h24v118h-24Z" fill="#151c1b"/>
+    <!-- mantel objects -->
+    <g>
+      <path d="M1295 258h52v44h-52Z" fill="#4b4d40"/>
+      <path d="M1303 267h36v28h-36Z" fill="#272f2c"/>
+      <path d="M1393 277c0-22 9-37 27-45 4 20-3 35-20 47Z" fill="#495b4b"/>
+      <path d="M1371 288h62v13h-62Z" fill="#565246"/>
+      <path d="M1486 248h18v53h-18ZM1517 268h13v33h-13Z" fill="#7f6444" opacity=".7"/>
+    </g>
+  </g>
+
+  <!-- Armchair left foreground -->
+  <g opacity=".92">
+    <path d="M73 626c-7-90 23-151 92-167 87-21 158 21 177 130l-10 188H99Z" fill="#283532"/>
+    <path d="M55 627c-24 0-36 21-28 43l27 102c5 17 21 25 36 19l3-141Z" fill="#36453e"/>
+    <path d="M317 605c22 5 31 22 26 43l-28 105c-5 18-21 27-37 22l16-149Z" fill="#1f2c2b"/>
+    <path d="M93 747h230l-13 100h-67l-7-54-16 54h-68Z" fill="#131c1c"/>
+    <path d="M100 626c29-50 79-70 137-55 42 11 68 42 79 88" fill="none" stroke="#5b6658" stroke-width="2" opacity=".23"/>
+    <path d="M116 678c21-22 51-27 84-14l12 41c-30 18-59 17-88-3Z" fill="#394a43" opacity=".5"/>
+  </g>
+
+  <!-- Low table with candles -->
+  <g>
+    <ellipse cx="790" cy="820" rx="330" ry="50" fill="#050808" opacity=".55" filter="url(#blur10)"/>
+    <path d="M580 655c123-17 275-16 407 2l-46 99c-113 17-227 14-328-7Z" fill="#393127"/>
+    <path d="M586 655c116-13 258-11 396 3-20 17-75 26-132 27-96 2-190-6-264-19Z" fill="#756047" opacity=".3"/>
+    <path d="M618 760c-2 43-11 86-32 140h31c17-48 24-92 28-138ZM915 766c8 44 20 84 37 134h-30c-16-48-26-88-29-134Z" fill="#211d18"/>
+    <!-- candlesticks -->
+    <g transform="translate(705 561)">
+      <path d="M36 34h21l8 93H28Z" fill="#8f7b57"/>
+      <ellipse cx="46" cy="128" rx="47" ry="10" fill="#554a37"/>
+      <path d="M33 21h28l-3 18H36Z" fill="#d4c29e"/>
+      <path d="M43 4h9v17h-9Z" fill="#f3e6c9"/>
+      <ellipse cx="47" cy="2" rx="8" ry="16" fill="#ffedb8"/>
+      <ellipse cx="47" cy="4" rx="5" ry="11" fill="#fff9dc"/>
+      <ellipse cx="47" cy="32" rx="235" ry="200" fill="url(#candle)" opacity=".72"/>
+    </g>
+    <g transform="translate(804 584)">
+      <path d="M8 46h31l6 77H0Z" fill="#716144"/>
+      <ellipse cx="24" cy="125" rx="40" ry="9" fill="#463b2a"/>
+      <path d="M13 32h25l-3 19H16Z" fill="#c6b38c"/>
+      <path d="M21 15h9v18h-9Z" fill="#eee0c2"/>
+      <ellipse cx="26" cy="14" rx="7" ry="13" fill="#f2c778"/>
+      <ellipse cx="26" cy="15" rx="4" ry="8" fill="#fff4cd"/>
+    </g>
+    <g transform="translate(892 575) rotate(-4)">
+      <path d="M0 0h93v52H0Z" fill="#b5a88e" opacity=".69"/>
+      <path d="M10 13h72M8 22h58M12 31h68M9 40h47" stroke="#625a49" stroke-width="1" opacity=".45"/>
+      <path d="M40 4c23 10 34 24 32 42" stroke="#796c54" stroke-width="1" fill="none" opacity=".3"/>
+    </g>
+    <g transform="translate(1028 608) rotate(7)">
+      <path d="M0 0h89" stroke="#a18b6a" stroke-width="4" opacity=".35"/>
+      <path d="M3 0v49h82v-41" fill="none" stroke="#a18b6a" stroke-width="4" opacity=".35"/>
+    </g>
+  </g>
+
+  <!-- Couch right foreground -->
+  <g opacity=".65">
+    <path d="M1183 747c0-65 43-108 118-115 97-8 166 31 185 108l-8 111h-295Z" fill="#292f29"/>
+    <path d="M1208 757c24-39 66-58 123-55 65 4 108 30 128 75" fill="none" stroke="#4a4e40" stroke-width="2" opacity=".3"/>
+    <path d="M1283 777h118" stroke="#171b18" stroke-width="3" opacity=".5"/>
+  </g>
+
+  <!-- Floor -->
+  <path d="M0 742c398-17 903-20 1600 3v155H0Z" fill="url(#floor)"/>
+  <path d="M0 778c367-18 831-22 1600 4" stroke="#5c4936" stroke-width="1" opacity=".2" fill="none"/>
+  <path d="M0 832c367-18 831-21 1600 5" stroke="#5c4936" stroke-width="1" opacity=".16" fill="none"/>
+
+  <!-- Rain shadows / reflections from window -->
+  <path d="M311 672 890 709 813 900H267Z" fill="#77949a" opacity=".045" filter="url(#blur30)"/>
+  <path d="M386 676c-21 72-56 145-103 224M521 688c-35 73-71 144-95 212M692 696c-27 73-52 141-68 204M805 704c-12 62-15 121-8 196" stroke="#b3c6c4" stroke-width="2" opacity=".025"/>
+
+  <!-- Hearth light on floor -->
+  <ellipse cx="1376" cy="783" rx="313" ry="102" fill="#c7773f" opacity=".09" filter="url(#blur30)"/>
+
+  <!-- window condensation drops -->
+  <g fill="#e4e6da" opacity=".12">
+    <circle cx="381" cy="296" r="4"/><circle cx="459" cy="384" r="3"/><circle cx="564" cy="267" r="2.5"/>
+    <circle cx="721" cy="333" r="3.5"/><circle cx="844" cy="280" r="2"/><circle cx="901" cy="427" r="3"/>
+  </g>
+
+  <rect width="1600" height="900" filter="url(#grain)" opacity=".1" style="mix-blend-mode:soft-light"/>
+</svg>

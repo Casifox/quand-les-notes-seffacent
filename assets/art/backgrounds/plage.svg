@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7f9699"/>
+      <stop offset=".36" stop-color="#adb7b1"/>
+      <stop offset=".7" stop-color="#d6cdb8"/>
+      <stop offset="1" stop-color="#c9bca5"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#738b8b"/>
+      <stop offset=".3" stop-color="#54777a"/>
+      <stop offset=".72" stop-color="#396066"/>
+      <stop offset="1" stop-color="#244c53"/>
+    </linearGradient>
+    <linearGradient id="wetSand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a79a83"/>
+      <stop offset="1" stop-color="#766e5e"/>
+    </linearGradient>
+    <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b9a98f"/>
+      <stop offset=".45" stop-color="#a8967c"/>
+      <stop offset="1" stop-color="#6e5e49"/>
+    </linearGradient>
+    <linearGradient id="cliff" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4c5750"/>
+      <stop offset="1" stop-color="#1c2c2b"/>
+    </linearGradient>
+    <linearGradient id="cliffLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#77786a"/>
+      <stop offset="1" stop-color="#333f39"/>
+    </linearGradient>
+    <radialGradient id="sun" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#f4e5c5" stop-opacity=".82"/>
+      <stop offset=".4" stop-color="#e6d4b2" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#e6d4b2" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="foam" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e2e3d8" stop-opacity=".1"/>
+      <stop offset=".5" stop-color="#ecebde" stop-opacity=".8"/>
+      <stop offset="1" stop-color="#e2e3d8" stop-opacity=".1"/>
+    </linearGradient>
+    <linearGradient id="groyne" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2a2c26"/>
+      <stop offset="1" stop-color="#514b3d"/>
+    </linearGradient>
+    <filter id="blur30"><feGaussianBlur stdDeviation="30"/></filter>
+    <filter id="blur10"><feGaussianBlur stdDeviation="10"/></filter>
+    <filter id="blur3"><feGaussianBlur stdDeviation="3"/></filter>
+    <filter id="rough">
+      <feTurbulence type="fractalNoise" baseFrequency=".012 .04" numOctaves="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="13"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".82" numOctaves="3" stitchTiles="stitch"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <ellipse cx="1070" cy="307" rx="610" ry="300" fill="url(#sun)"/>
+  <circle cx="1092" cy="282" r="46" fill="#f8e9cc" opacity=".33" filter="url(#blur10)"/>
+
+  <!-- Clouds -->
+  <g fill="#e2ded1" opacity=".4">
+    <path d="M-80 176c92-47 184-52 268-15 50 23 95 30 163 18 79-15 135-5 190 31 66 44 140 46 216 16 66-25 128-24 199 6 75 32 161 23 245-12 81-34 164-29 255 3 42 15 82 17 134 10v117c-98 16-185 13-273-9-96-23-187-14-272 15-99 35-196 43-306 9-76-24-146-24-211 3-86 36-167 35-254 1-75-30-150-23-226 4-58 21-104 18-149 7Z" filter="url(#blur10)"/>
+  </g>
+  <g fill="#d0c6b1" opacity=".36" filter="url(#blur30)">
+    <path d="M-60 385c146-44 275-40 389-13 123 30 225 25 341-8 138-40 275-37 405 8 123 42 248 45 525 1v104H-60Z"/>
+  </g>
+
+  <!-- Distant headlands -->
+  <path d="M0 401c78-20 141-25 208-17 61 8 118 30 178 25 64-6 124-38 188-35 50 2 96 21 145 20 62-2 119-26 179-23 55 2 105 19 156 23 66 5 143-17 207-14 55 3 104 20 145 35l-38 70H0Z" fill="#465a56" opacity=".82"/>
+  <path d="M0 448c120-25 233-21 342-3 123 21 232 20 360-4 110-21 225-14 331 16 146 41 288 35 567-15v85H0Z" fill="#36504f" opacity=".7"/>
+
+  <!-- Sea -->
+  <path d="M0 481c110-12 211-5 310 10 100 15 202 11 311-6 105-17 213-17 321 2 107 19 218 17 323-4 121-24 231-21 335 8v191H0Z" fill="url(#sea)"/>
+  <!-- Sea sparkle / horizon line -->
+  <path d="M0 481c159 0 318-8 477-11 285-6 565-1 1123 16" stroke="#d1cbbd" stroke-width="1.6" opacity=".4" fill="none"/>
+  <path d="M695 485c92 4 191 2 291-5 82-6 178-9 298-5" stroke="#e8dbc5" stroke-width="3" opacity=".22" fill="none" filter="url(#blur3)"/>
+  <g stroke="#b6c7c3" stroke-width="1.4" opacity=".27" fill="none">
+    <path d="M20 514c120-7 228 3 338 14M580 524c99-10 198-11 301-2M1018 519c124-12 242-8 351 4M151 552c134-7 270-2 401 9M760 560c139-9 280-3 415 9M1230 553c100-5 194 1 288 13"/>
+  </g>
+  <!-- waves -->
+  <path d="M0 584c90-23 164-19 242 10 87 33 169 31 262 4 104-30 203-28 304 3 93 29 184 28 283 0 114-32 225-29 342 4 66 19 128 20 187 10v65c-83 7-157 0-232-20-104-28-201-27-299 2-105 31-203 32-301 5-109-30-205-31-305-2-98 29-193 30-289 4-79-22-149-24-214-7Z" fill="#487079" opacity=".53"/>
+  <path d="M0 617c97-14 180-4 259 24 88 32 169 33 267 2 108-34 207-33 316 2 100 32 191 31 291-1 107-34 214-34 322-1 55 17 101 18 145 13" fill="none" stroke="url(#foam)" stroke-width="8" opacity=".55" filter="url(#blur3)"/>
+  <path d="M0 632c84-16 161-9 237 15 82 25 158 27 243 3 107-30 204-30 310 1 103 30 195 30 296 0 113-33 226-34 337-3 64 18 117 19 177 9" fill="none" stroke="#e5e4d8" stroke-width="2" opacity=".37"/>
+  <g stroke="#d9dcd2" stroke-width="1.6" opacity=".36" fill="none">
+    <path d="M45 650c82-18 155-12 227 9M354 672c89-19 176-15 262 2M690 678c111-20 207-16 302 3M1081 650c98-11 191-4 283 13"/>
+  </g>
+
+  <!-- Wet sand -->
+  <path d="M0 650c82-13 162-14 244-5 90 10 180 28 270 11 98-18 188-32 297-19 102 12 203 39 302 26 122-17 238-33 360-9 45 9 87 8 127-2v82c-68 16-130 14-190-4-132-40-252-39-379-8-87 21-167 17-251-6-98-27-190-28-284-3-84 22-163 22-240-2-84-26-165-26-256 2Z" fill="url(#wetSand)" opacity=".61"/>
+  <path d="M0 712c98-14 191-9 280 11 104 24 201 25 302 3 97-21 194-22 291-2 104 22 205 21 310-2 98-21 202-24 311-3 27 5 50 6 70 4v35c-53 3-103-2-153-13-105-23-206-21-308 4-102 25-205 26-309 2-99-23-196-24-293-2-106 24-207 24-310 0-62-15-123-21-191-14Z" fill="#8e826d" opacity=".36"/>
+
+  <!-- Sand foreground -->
+  <path d="M0 776c85-13 161-8 237 12 100 27 196 29 296 2 101-27 204-27 310 1 100 27 201 29 305 0 101-28 208-30 316-1 47 13 96 15 136 9v101H0Z" fill="url(#sand)"/>
+  <path d="M0 797c129-24 242-13 354 17 89 24 177 27 271 6 111-25 220-23 333 5 101 25 202 24 305-1 104-25 200-24 337 6v70H0Z" fill="#a7957b" opacity=".42"/>
+  <g stroke="#d8c7ab" stroke-width="1" opacity=".18" fill="none">
+    <path d="M0 843c127-20 248-14 365 14 107 26 217 29 327 5M752 869c117-28 231-25 349-1M1044 831c122-19 235-12 342 12M1132 887c158-20 314-16 468 2"/>
+  </g>
+
+  <!-- Footprints -->
+  <g fill="#756751" opacity=".43">
+    <path d="M572 882c13-11 31-10 41 2 6 8-2 17-14 16-13-1-23-9-27-18Z"/>
+    <path d="M639 847c12-10 28-8 37 3 6 8-1 16-12 15-12-1-21-8-25-18Z"/>
+    <path d="M706 806c11-9 25-7 33 3 6 7-1 15-11 14-11-1-18-8-22-17Z"/>
+    <path d="M755 764c10-8 23-6 29 4 5 7-1 14-10 13-9-1-15-8-19-17Z"/>
+    <path d="M798 723c8-7 18-5 24 3 4 6-1 12-8 11-8-1-13-7-16-14Z"/>
+    <path d="M548 866c8-7 19-5 24 4 4 6-1 12-8 11-8-1-13-7-16-15Z"/>
+    <path d="M686 831c8-7 19-5 24 4 4 6-1 12-8 11-8-1-13-7-16-15Z"/>
+    <path d="M815 787c7-6 16-4 21 3 3 6-1 10-7 9-7-1-11-6-14-12Z"/>
+  </g>
+
+  <!-- Shells and pebbles -->
+  <g>
+    <g transform="translate(432 812) rotate(-16)">
+      <path d="M0 26C4 5 19-6 39 3c15 7 18 22 8 34-15 18-33 13-47-1Z" fill="#d6c1a2"/>
+      <path d="M9 25c5-11 14-17 27-16M5 32c10-4 20-3 31 4M13 40c8-5 15-5 23 0" stroke="#9b8063" stroke-width="1.2" fill="none" opacity=".7"/>
+    </g>
+    <g transform="translate(1204 816) rotate(9)">
+      <path d="M0 19C5 2 18-4 32 2c12 5 14 17 7 27-11 15-28 12-39-1Z" fill="#c2ad8e" opacity=".8"/>
+      <path d="M7 19c5-8 12-11 20-10M6 25c7-2 14-1 20 4" stroke="#806a50" stroke-width="1" fill="none" opacity=".55"/>
+    </g>
+    <g fill="#61584b" opacity=".5">
+      <ellipse cx="291" cy="846" rx="8" ry="4"/>
+      <ellipse cx="333" cy="872" rx="5" ry="3"/>
+      <ellipse cx="987" cy="840" rx="9" ry="4"/>
+      <ellipse cx="1026" cy="864" rx="5" ry="3"/>
+      <ellipse cx="1324" cy="851" rx="7" ry="3"/>
+      <ellipse cx="1402" cy="874" rx="4" ry="2"/>
+      <ellipse cx="696" cy="852" rx="6" ry="3"/>
+    </g>
+  </g>
+
+  <!-- Driftwood foreground left -->
+  <g>
+    <path d="M75 884c47-42 83-88 119-140 30-44 55-74 96-91" stroke="#4e4030" stroke-width="31" fill="none" stroke-linecap="round" filter="url(#rough)"/>
+    <path d="M81 879c44-42 82-88 116-138 31-45 58-73 95-87" stroke="#8d7254" stroke-width="9" fill="none" stroke-linecap="round" opacity=".45"/>
+    <path d="M184 746c26-25 53-35 83-32M143 808c-22-14-40-16-64-8M216 707c2-25 12-42 31-55" stroke="#4a3c2e" stroke-width="12" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Cliff left with grass -->
+  <path d="M0 900V579c65-26 111-10 158 21 53 35 99 45 139 92 49 58 88 140 119 208H0Z" fill="url(#cliff)" filter="url(#rough)"/>
+  <path d="M0 613c48-17 91-7 132 22 39 28 67 72 104 94 48 29 78 88 109 171H0Z" fill="url(#cliffLight)" opacity=".58"/>
+  <g stroke="#b4a88e" stroke-width="1.1" opacity=".2">
+    <path d="M17 671c55 5 95 33 128 77M5 733c45-2 89 19 130 65M55 826c37 2 70 25 94 61M0 879c24 1 43 10 65 21"/>
+  </g>
+  <g fill="#4d604e" opacity=".7">
+    <path d="M12 631c10-53 33-87 66-104-4 49-22 84-58 112Z"/>
+    <path d="M73 620c1-33 17-58 47-76 6 36-7 63-45 87Z"/>
+    <path d="M120 663c11-31 31-49 61-55-10 32-32 50-64 62Z"/>
+    <path d="M36 593c7-33 22-55 47-67-2 32-18 55-43 74Z" opacity=".65"/>
+  </g>
+
+  <!-- Groyne right -->
+  <g opacity=".76">
+    <path d="M1303 607l-38 253 49 10 60-257Z" fill="url(#groyne)"/>
+    <path d="M1398 601l-15 271 39 6 40-275Z" fill="#302f28"/>
+    <path d="M1485 618l2 266 27 2 45-263Z" fill="#3f3d31"/>
+    <path d="M1279 685l194-13M1289 748l170-10M1310 817l147-7" stroke="#726a57" stroke-width="5" opacity=".38"/>
+  </g>
+
+  <!-- small boat on horizon -->
+  <g transform="translate(322 455)" opacity=".66">
+    <path d="M0 14c11 8 29 10 47 4l-7-9H8Z" fill="#273d3e"/>
+    <path d="M23 18v-30l23 25Z" fill="#d5c9b3" opacity=".6"/>
+    <path d="M41 18l17-13-16-3Z" fill="#b4a88f" opacity=".5"/>
+  </g>
+
+  <!-- Birds -->
+  <g fill="none" stroke="#3d4d4d" stroke-width="1.7" opacity=".55">
+    <path d="M834 197c7-6 13-6 20 0 7-6 13-6 20 0"/>
+    <path d="M913 157c6-5 11-5 17 0 6-5 11-5 17 0"/>
+    <path d="M1178 215c7-5 13-5 19 0 6-5 12-5 18 0"/>
+    <path d="M1248 179c5-4 9-4 14 0 5-4 9-4 14 0"/>
+  </g>
+
+  <!-- Subtle foreground mist -->
+  <ellipse cx="800" cy="671" rx="780" ry="90" fill="#d5d2c3" opacity=".08" filter="url(#blur30)"/>
+
+  <rect width="1600" height="900" filter="url(#grain)" opacity=".09" style="mix-blend-mode:soft-light"/>
+</svg>
